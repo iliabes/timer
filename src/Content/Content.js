@@ -7,7 +7,7 @@ import {FaPlay} from 'react-icons/fa';
 function Header() {
   return (
     <div className="content">
-      <Circle/>
+      {/* <Circle/> */}
         <TimerCont/>
         <div className='content-contInfo'>
           <h1>Pomodoro</h1>

@@ -1,14 +1,31 @@
-import React, { useState , useEffect} from 'react';
+import React, { useState , useEffect,useContext} from 'react';
 import './Timer.sass';
 import {FaPlay} from 'react-icons/fa';
 import {FaStop} from 'react-icons/fa';
 import {FaPause} from 'react-icons/fa';
-
+import {Context} from '../context/contest.js'
 
 function Timer(props) {
-let newTimer;
+  const {reset,start,stop} = useContext(Context)
+  return (
+      <>
+      <div className='contCell'>
+      <div className='timer-cellNumb'><p className='timer'>{props.minites}</p></div>
+      <div className='timer-cellNumb'><p className='timer'>{props.seconds}</p></div>
+      <div className='timer-cellNumb'><p className='timer'>{props.miliseconds}</p></div>
+      </div>
+      <div className='play'>
+        <FaPlay onClick={start}/>  <FaPause onClick={stop}/> <FaStop onClick={reset}/>
+      </div>
+      </>
+    );
+  }
 
 
+
+
+export default Timer;
+// 
 
 
 //   useEffect(() => {
@@ -37,24 +54,3 @@ let newTimer;
 // }
 
 // let newTimer ;
-
-
-
-
-
-
-  return (
-      <>
-      <p id='timerText' className='timer'>{props.time}</p>
-      <div className='play'>
-        <FaPlay onClick={console.log()}/> <FaStop onClick={console.log()}/> <FaPause/>
-      </div>
-      </>
-    );
-  }
-
-
-
-
-export default Timer;
-

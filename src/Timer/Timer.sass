@@ -1,22 +1,35 @@
 
 
-
-.content-contTimer
-    background: linear-gradient(#CA5A5A, #FDF9F9)
+.contCell
+    padding-top: 150px
     display: flex
-    flex-direction: column
-    align-items: center
-    padding: 50px
-    .timer
-        margin: 0
-        padding-top: 150px
-        font-size: 50px
-        font-family: 'Ribeye Marrow', cursive;
-    .play 
-        display: flex
-        justify-content: space-around
-        svg
-            margin-top: 50px
-            margin: 20px 6px
-            font-size: 35px
+    flex-direction: row
+    .timer-cellNumb
+        width: 75px
+        height: 75px
+        text-align: center
+        font-size: 2em
+        // background: linear-gradient(135deg, #12BCB0 20%, #FABE0E 70%)
+        background: linear-gradient(135deg, #c41616 20%, #4c00ff 70%)
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+        display: inline-block
+        padding: 0.3em 0.6em 
+        border: 3px solid transparent
+        border-image: linear-gradient(135deg, #c41616 20%, #1a0942 70%)
+        border-image-slice: 1
+        .timer
+            font-size: 50px
+            font-family: 'Ribeye Marrow', cursive
+            padding: 5px        
+    .timer-cellNumb:not(:first-child)
+        border-left: 1px solid #000
+.play 
+    display: flex
+    justify-content: space-around
+    color: #f92727
+    svg
+        margin-top: 50px
+        margin: 20px 6px
+        font-size: 35px
 
