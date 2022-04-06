@@ -1,4 +1,3 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import '../App.css';
 import TopNavButton from '../topnavButton/topnavButtin';
@@ -10,6 +9,7 @@ import {FaCog} from 'react-icons/fa';
 import {FaGrav} from 'react-icons/fa';
 import {FaAdjust} from 'react-icons/fa';
 import {FaInfo} from 'react-icons/fa';
+import {Link } from "react-router-dom";
 
 
 function Header() {
@@ -24,14 +24,11 @@ function Header() {
         <TopNavButton icon={<FaInfo/>}></TopNavButton>
         <TopNavButton icon={<FaCog/>}></TopNavButton>
         <TopNavButton icon={<FaAdjust/>}></TopNavButton>
+        <Link to="/page1">Page1</Link>
+        <Link to="/page2">Page2</Link>
       </div> 
 
-      {/* <BrowserRouter>
-      <Routes>
-       <Route path="/" element={<Content />} />
-       <Route path="/sek" element={<Timer2 />} />
-      </Routes>
-    </BrowserRouter> */}
+      
 
     </div>
   )
