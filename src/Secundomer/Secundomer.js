@@ -1,14 +1,14 @@
 import React, { useState , useEffect} from 'react';
-import './Timer.sass';
+import './Secundomer.sass';
 
 import {Context} from '../context/contest.js'
-import Timer from '../Timer/Timer.js'
 import {FaPlay} from 'react-icons/fa';
 import {FaStop} from 'react-icons/fa';
 import {FaPause} from 'react-icons/fa';
+import ActionButton from '../Buttons/actionButton/actionButton'
 
 
-function TimerCont() {
+function Secundomer() {
 
 const [switchTimer, setSwitchTimer] = useState(1);
 const [minites, setminites] = useState(0);
@@ -64,9 +64,16 @@ const start = () => {
 
 return (
     <div className='content-contTimer'>
-      <Context.Provider value={{reset,start,stop}}>
-        <Timer minites={minites} seconds={seconds} miliseconds={miliseconds} switchTimer={switchTimer}/>
-      </Context.Provider>
+      <div className='contCell'>
+      <div className='timer-cellNumb'><p className='timer'>{minites}</p></div>
+      <div className='timer-cellNumb'><p className='timer'>{seconds}</p></div>
+      <div className='timer-cellNumb'><p className='timer'>{miliseconds}</p></div>
+      </div>
+      <div className='play'>
+        <ActionButton icon={FaPlay} function={start} />
+        <ActionButton icon={FaPause} function={stop} />
+        <ActionButton icon={FaStop} function={reset} />
+      </div>
     </div>
   );
 }
@@ -74,5 +81,12 @@ return (
 
 
 
-export default TimerCont
+export default Secundomer
 
+// return (
+//   <div className='content-contTimer'>
+//     <Context.Provider value={{reset,start,stop}}>
+//       <Timer minites={minites} seconds={seconds} miliseconds={miliseconds} switchTimer={switchTimer}/>
+//     </Context.Provider>
+//   </div>
+// );

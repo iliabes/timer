@@ -1,6 +1,6 @@
 
-import '../App.css';
-import '../color.sass'
+// import '~/App.css';
+// import '../color.sass'
 import './topnavButtin.sass'
 
 
