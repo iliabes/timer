@@ -19,13 +19,8 @@ function Header() {
         <TopNavButton icon={<FaGrav/>}></TopNavButton>
       </div>
       <div className='nav-button'>
-
-        {/* <TopNavButton  icon={<FaPlay/>}></TopNavButton>
-        <TopNavButton icon={<FaInfo/>}></TopNavButton>
-        <TopNavButton icon={<FaCog/>}></TopNavButton> */}
         <Nav icon={<FaClock/>} page={'/sec'}/>
         <Nav icon={<FaStopwatch/>} page={'./timer'}/>
-        <TopNavButton icon={<FaAdjust/>}></TopNavButton>
       </div> 
 
       

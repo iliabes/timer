@@ -7,7 +7,7 @@ import Timer from './Timer/Timer'
 
 import {  Routes ,Route, Link} from "react-router-dom";
 import {useState} from 'react';
-
+import Canvas from './Canvas/Canvas';
 
 import ModalWind from './ModalWind/modalWind.js'
 
@@ -24,6 +24,7 @@ function App() {
       <Route path="/timer" element={<Timer />} />
       <Route path="*" element={<Timer />} />
     </Routes>
+    <Canvas/>
     <Footer/>
     </>
   )}

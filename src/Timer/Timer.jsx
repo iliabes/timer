@@ -11,49 +11,114 @@ import {FaPause} from 'react-icons/fa';
 
 function Timer() {
   const [hour, setHour] = useState(0)
-  const [min, setMin] = useState(0)
-  const [sec, setSec] = useState(10)
-  const [milisec, setMilisec] = useState(60)
+  const [min, setMin] = useState('00')
+  const [sec, setSec] = useState('00')
+  const [milisec, setMilisec] = useState('00')
   const [paused, setPaused] = useState(true);
   const [over, setOver] = useState(true);
   
-  function addMinutes(){
-    setSec(sec + 1)
+  function addMinutes(minute){
+    console.log(Number(min),minute);
+    if(Number(min) + Number(minute) >= 10){
+      setMin(Number(min) + minute)
+    }else{
+      let nm = Number(min) + minute
+      setMin(('0' + nm))
+      console.log(min);
+    }
+    if(Number(min) + Number(minute) >= 60){
+      if(Number(min) + Number(minute) <= 10){
+        setMin(min + minute - 60)
+      }else{
+        let nm = (Number(min) + minute) - 60
+        setMin(('0' + nm))
+      }
+      
+      setHour(hour + 1)
+    }
+  }
+
+  function setMinutes(minute){
+    setMin(minute)
   }
 
   function startTtimer(){
-    console.log(paused);
-    if (paused || over) return;
-    if (hour <= 0 && min <= 0 && sec <= 0 && milisec <= 0) {
-      console.log('win')
-      return;
-    }
-    setMilisec(Number(milisec) - 1)
     
 
-    if(Number(milisec) <= 0 && Number(sec) > 0){
-      setMilisec(60)
-      setSec(sec - 1)
-  
+    if (paused || over) return;
+    if (Number(hour) <= 0 && Number(min) <= 0 && Number(sec) <= 0 && Number(milisec) <= 0) {
+      setMilisec('00')
+      reset()
+      return;
+    }
+    
+
+
+    if(Number(min) === 0 && Number(hour) > 0){
+      setMin(59)
+      setHour(hour - 1)
+    }
+    if(Number(sec) === 0 && Number(min) > 0){
+      setSec(59)
+      
+      if(Number(min) > 10){
+        setMin(min - 1)
+      }else{
+        let nm = (Number(min) - 1)
+        setSec('0' + nm)
+      }
+    }
+
+    if(Number(milisec) === 0 && Number(sec) > 0){
+      setMilisec(59)
+     
+      if(Number(sec) > 10){
+        setSec(sec - 1)
+      }else{
+        let nm = (Number(sec) - 1)
+        setSec('0' + nm)
+      }
+ 
+    }
+
+    if(Number(milisec) !== 0){
+      if(Number(milisec) > 10){
+        setMilisec(Number(milisec) - 1)
+      }else{
+        let nm = (Number(milisec) - 1)
+        setMilisec('0' + nm)
+      }
     }
   
-    // if(seconds >= 60){
-    //   setSeconds(0)
-    //   minites(seconds + 1)
-    // }
-    // if(minites >= 60){
-    //   alert('you win')
-    // }
+
+
+
+
   }
   
 
   function start(){
     setPaused(false);
     setOver(false);
+    console.log('start');
+  }
+
+  function pause(){
+    setPaused(true);
+
+  }
+
+  function reset(){
+    setPaused(true);
+    setOver(true);
+    setHour('00')
+    setMin('00')
+    setSec('00')
+    setMilisec('00')
   }
 
   useEffect(()=>{
-    let timerID = setInterval(()=> startTtimer(),10000)
+    let timerID = setInterval(()=> startTtimer(),10)
     return () => clearInterval(timerID)
   })
 
@@ -67,12 +132,13 @@ function Timer() {
   return (
 
     <div className="cont-timer">
+       {/* <Canvas/> */}
     <div className="cont-add-time">
-      <BtnAddTime function={addMinutes} title="+60min"/>
-      <BtnAddTime title="+30min"/>
-      <BtnAddTime title="+15min"/>
-      <BtnAddTime title="+5min"/>
-      <BtnAddTime title="+1min"/>
+      <BtnAddTime function={()=>{addMinutes(60)}} title="+60min"/>
+      <BtnAddTime function={()=>{addMinutes(30)}} title="+30min"/>
+      <BtnAddTime function={()=>{addMinutes(15)}} title="+15min"/>
+      <BtnAddTime function={()=>{addMinutes(5)}} title="+5min"/>
+      <BtnAddTime function={()=>{addMinutes(1)}} title="+1min"/>
     </div>
     <div className="timer">
       <div className="timer-cell tiemrHour"><p>{hour}</p></div>
@@ -85,16 +151,16 @@ function Timer() {
     </div>
     <div className="cont-actionBtn">
         <ActionButton function={start} icon={FaPlay}  />
-        <ActionButton icon={FaPause}  />
-        <ActionButton icon={FaStop}  />
+        <ActionButton function={pause} icon={FaPause}  />
+        <ActionButton function={reset} icon={FaStop}  />
     </div>
     <div className="cont-set-time">
-      <BtnSetTime  title='1h'/>
-      <BtnSetTime title='30min'/>
-      <BtnSetTime title='15min'/>
+      <BtnSetTime function={()=>{setMinutes(60)}} title='1h'/>
+      <BtnSetTime function={()=>{setMinutes(30)}} title='30min'/>
+      <BtnSetTime function={()=>{setMinutes(15)}} title='15min'/>
    
     </div>
-    <Canvas/>
+   
     </div>
 
  
