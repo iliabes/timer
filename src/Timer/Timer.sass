@@ -1,5 +1,5 @@
 .cont-timer
-    // padding: 150px 0px
+    
     background-color: #191a18
     width: 100%
     display: flex
@@ -7,14 +7,13 @@
     align-items: center
     flex-direction: column
     box-sizing: border-box
-    height: 92vh
+    height: 95vh
     .cont-add-time,.cont-set-time,.cont-actionBtn
         width: 50%
         display: flex
         justify-content: center
         z-index: 2
     .timer
-    
         width: 50%
         display: flex
         flex-direction: row
@@ -26,6 +25,12 @@
                 font-size: 50px
                 color: #fff
                 margin: 0
-
+                z-index: 2
     .cont-set-time
         width: 50%
+
+
+@media (max-width: 500px)
+    .cont-timer .timer .timer-cell
+        padding: 0px 2px
+ 

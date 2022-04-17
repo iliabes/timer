@@ -1,7 +1,7 @@
 import React, { useState , useEffect} from 'react';
 import './Secundomer.sass';
 
-import {Context} from '../context/contest.js'
+
 import {FaPlay} from 'react-icons/fa';
 import {FaStop} from 'react-icons/fa';
 import {FaPause} from 'react-icons/fa';
@@ -10,7 +10,6 @@ import ActionButton from '../Buttons/actionButton/actionButton'
 
 function Secundomer() {
 
-const [switchTimer, setSwitchTimer] = useState(1);
 const [minites, setminites] = useState(0);
 const [seconds, setSeconds] = useState(0);
 const [miliseconds, setMliseconds] = useState('0');
@@ -63,7 +62,7 @@ const start = () => {
 };
 
 return (
-    <div className='content-contTimer'>
+    <div className='cont-secumdomer'>
       <div className='contCell'>
       <div className='timer-cellNumb'><p className='timer'>{minites}</p></div>
       <div className='timer-cellNumb'><p className='timer'>{seconds}</p></div>

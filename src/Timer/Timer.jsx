@@ -1,9 +1,9 @@
 import './Timer.sass'
-import React, { useState , useEffect, useRef} from 'react';
+import React, { useState , useEffect} from 'react';
 import BtnAddTime from '../Buttons/btnAddTime/btnAddTime'
 import BtnSetTime from '../Buttons/btnSetTime/btnSetTime'
 import ActionButton from '../Buttons/actionButton/actionButton'
-import Canvas from '../Canvas/Canvas'
+
 
 import {FaPlay} from 'react-icons/fa';
 import {FaStop} from 'react-icons/fa';
@@ -33,8 +33,7 @@ function Timer() {
         let nm = (Number(min) + minute) - 60
         setMin(('0' + nm))
       }
-      
-      setHour(hour + 1)
+      setHour(Number(hour) + 1)
     }
   }
 
@@ -46,40 +45,44 @@ function Timer() {
     
 
     if (paused || over) return;
-    if (Number(hour) <= 0 && Number(min) <= 0 && Number(sec) <= 0 && Number(milisec) <= 0) {
+    if (Number(hour) === 0 && Number(min) === 0 && Number(sec) === 0 && Number(milisec) === 0) {
       setMilisec('00')
       reset()
       return;
     }
-    
 
-
-    if(Number(min) === 0 && Number(hour) > 0){
-      setMin(59)
-      setHour(hour - 1)
-    }
-    if(Number(sec) === 0 && Number(min) > 0){
-      setSec(59)
-      
-      if(Number(min) > 10){
-        setMin(min - 1)
-      }else{
-        let nm = (Number(min) - 1)
-        setSec('0' + nm)
-      }
-    }
-
+    //milisec --
     if(Number(milisec) === 0 && Number(sec) > 0){
       setMilisec(59)
-     
       if(Number(sec) > 10){
-        setSec(sec - 1)
+        setSec(Number(sec) - 1)
       }else{
         let nm = (Number(sec) - 1)
         setSec('0' + nm)
       }
- 
     }
+
+    //sec
+    if(Number(sec) === 0 && Number(min) > 0){
+      console.log(sec);
+      setSec(59)
+      if(Number(min) > 10){
+        setMin(min - 1)
+        console.log('>10');
+      }else{
+        let nm = (Number(min) - 1)
+        setMin('0' + nm)
+        console.log('<10');
+      }
+    }
+    
+    //min
+    if(Number(min) === 0 && Number(hour) > 0){
+      setMin(59)
+      setHour(hour - 1)
+    }
+
+
 
     if(Number(milisec) !== 0){
       if(Number(milisec) > 10){
@@ -89,11 +92,6 @@ function Timer() {
         setMilisec('0' + nm)
       }
     }
-  
-
-
-
-
   }
   
 
@@ -122,17 +120,9 @@ function Timer() {
     return () => clearInterval(timerID)
   })
 
-
-
-    
-    
-
-
-
   return (
 
     <div className="cont-timer">
-       {/* <Canvas/> */}
     <div className="cont-add-time">
       <BtnAddTime function={()=>{addMinutes(60)}} title="+60min"/>
       <BtnAddTime function={()=>{addMinutes(30)}} title="+30min"/>

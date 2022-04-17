@@ -27,7 +27,10 @@ function Canvas() {
 
       cnv.width  = window.innerWidth;
       cnv.height = window.innerHeight;
-      if(cnv.width < 380){
+      if(cnv.width < 590){
+        ringRadius = 200
+      }
+      if(cnv.width < 510){
         ringRadius = 150
       }
     }
@@ -90,9 +93,7 @@ function Canvas() {
     window.addEventListener(`resize`, init);
   },[])
 
-  function stop(){
-    console.log(stop)
-  }
+
 
   return (
     <>

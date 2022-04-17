@@ -1,71 +1,49 @@
-.content
-    display: flex
-    flex-direction: column
 
-
-
-.content-contTimer
+.cont-secumdomer
     display: flex
     flex-direction: column
     align-items: center
     justify-content: center
-    // padding: 50px
     background-color: #191a18
-    
-    height: 92vh
+    height: 95vh
     width: 100wh
-    .timer
-
-        margin: 0
-        padding-top: 150px
-        font-size: 50px
-        font-family: 'Ribeye Marrow', cursive
-
-
+    
+    .contCell
+        display: flex
+        flex-direction: row
+        .timer-cellNumb
+            width: 75px
+            height: 75px
+            text-align: center
+            font-size: 2em
+            background: linear-gradient(135deg, #12BCB0 20%, #FABE0E 70%)
+            background: linear-gradient(135deg, #c41616 20%, #4c00ff 70%)
+            background: linear-gradient(235deg, #c41616 20%, #fff 70%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            display: inline-block
+            padding: 0.3em 0.6em 
+            border: 3px solid transparent
+            border-image: linear-gradient(135deg, #c41616 20%, #1a0942 70%)
+            border-image: linear-gradient(135deg, #c41616 20%, #fff 70%)
+            border-image-slice: 1
+            z-index: 2
+            .timer
+                font-size: 50px
+                font-family: 'Ribeye Marrow', cursive
+                padding: 5px        
+                color: #fff
+                margin: 0
+                z-index: 2
+        .timer-cellNumb:not(:first-child)
+            border-left: 1px solid #000
     .play 
         display: flex
         justify-content: space-around
+        color: #f92727
         z-index: 2
         svg
             margin-top: 50px
             margin: 20px 6px
             font-size: 35px
-
-
-
-.contCell
-    z-index: 2
-    // padding-top: 150px
-    display: flex
-    flex-direction: row
-    .timer-cellNumb
-        width: 75px
-        height: 75px
-        text-align: center
-        font-size: 2em
-        // background: linear-gradient(135deg, #12BCB0 20%, #FABE0E 70%)
-        background: linear-gradient(135deg, #c41616 20%, #4c00ff 70%)
-
-        -webkit-background-clip: text
-        -webkit-text-fill-color: transparent
-        display: inline-block
-        padding: 0.3em 0.6em 
-        border: 3px solid transparent
-        border-image: linear-gradient(135deg, #c41616 20%, #1a0942 70%)
-        border-image-slice: 1
-        .timer
-            font-size: 50px
-            font-family: 'Ribeye Marrow', cursive
-            padding: 5px        
-            color: #fff
-    .timer-cellNumb:not(:first-child)
-        border-left: 1px solid #000
-.play 
-    display: flex
-    justify-content: space-around
-    color: #f92727
-    svg
-        margin-top: 50px
-        margin: 20px 6px
-        font-size: 35px
 

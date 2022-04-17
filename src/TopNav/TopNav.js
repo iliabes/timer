@@ -3,13 +3,10 @@ import '../App.css';
 import TopNavButton from '../Buttons/topnavButton/topnavButtin';
 import Nav from '../Buttons/nav/Nav';
 import './TopNav.sass'
-import {FaPlay} from 'react-icons/fa';
-import {FaCog} from 'react-icons/fa';
 import {FaGrav} from 'react-icons/fa';
-import {FaAdjust} from 'react-icons/fa';
 import {FaStopwatch} from 'react-icons/fa';
 import {FaClock} from 'react-icons/fa'
-import {Link } from "react-router-dom";
+
 
 
 function Header() {
@@ -30,4 +27,3 @@ function Header() {
 }
 
 export default Header;
-{/*  */}
